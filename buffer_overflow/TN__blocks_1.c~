@@ -1,0 +1,41 @@
+
+#include <stdio.h>
+
+#define SIZE 172
+#define BLOCK_SIZE 32
+
+void encrypt_block(char *p)
+{
+  int i;
+  for(i = 0; i < BLOCK_SIZE; ++i){
+    p[i] = (5 * p[i]) % 256;
+  }
+}
+
+void encrypt_partial_block(char *p, int size)
+{
+  int i;
+  for(i = 0; i < size; ++i){
+    p[i] = (5 * p[i]) % 256;
+  }
+}
+
+int main(void)
+{
+  int n = SIZE;
+  int nb_blocks = SIZE / BLOCK_SIZE;
+  int remaining_size = n - nb_blocks * BLOCK_SIZE;
+  char t[SIZE];
+  int i;
+
+  for(i = 0; i < SIZE; ++i){
+    t[i] = i % 12345 * i % 5432;
+  }
+  
+  for(i = 0; i < nb_blocks; ++i){
+    encrypt_block(&t[i * BLOCK_SIZE]);
+  }
+  
+  encrypt_partial_block(&t[i * BLOCK_SIZE], remaining_size);
+  
+}

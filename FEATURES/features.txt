@@ -1,0 +1,8 @@
+
+Constant propagation
+Propagation through function call
+Pointer argument
+Pointer to int (exact + approximative)
+Function pointer (exact + approximative)
+Struct (using "." or using pointer arithmetics)
+Pointer arithmetics
